@@ -7,8 +7,12 @@
             "ES2020"
         ],
         "sourceMap": true,
-        "rootDir": "src",
-        "strict": true
+        "rootDirs": [
+            "src",
+            "scripts"
+        ],
+        "strict": true,
+        "resolveJsonModule": true
     },
     "exclude": [
         "node_modules",
