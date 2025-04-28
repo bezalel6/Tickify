@@ -1,11 +1,11 @@
 {
     "name": "tickify",
-    "publisher": "bezalel6",
+    "publisher": "RNDev",
     "displayName": "Tickify",
     "description": "Automatically converts string interpolation to template literals",
     "version": "1.0.1",
     "author": {
-        "name": "bezalel6"
+        "name": "RNDev"
     },
     "engines": {
         "vscode": "^1.60.0"

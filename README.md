@@ -2,9 +2,9 @@
 
 # Tickify
 
-[![Version](https://img.shields.io/visual-studio-marketplace/v/bezalel6.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=bezalel6.tickify)
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/bezalel6.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=bezalel6.tickify)
-[![Rating](https://img.shields.io/visual-studio-marketplace/r/bezalel6.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=bezalel6.tickify)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/RNDev.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=RNDev.tickify)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/RNDev.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=RNDev.tickify)
+[![Rating](https://img.shields.io/visual-studio-marketplace/r/RNDev.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=RNDev.tickify)
 ![Extension in Action](assets/animation.gif)\
 A VS Code extension that automatically converts string interpolation to template literals. Never manually convert quotes to backticks again!
 
@@ -30,7 +30,7 @@ When you type `${}` inside single or double quotes in JavaScript/TypeScript file
 
 1. Open VS Code
 2. Press `Ctrl+P` (Windows/Linux) or `Cmd+P` (Mac)
-3. Type `ext install bezalel6.tickify`
+3. Type `ext install RNDev.tickify`
 4. Press Enter
 
 ## 🎯 Usage
@@ -66,4 +66,4 @@ If you find this extension helpful and would like to support its development, yo
 
 ---
 
-**Enjoy!** If you find this extension helpful, please consider giving it a ⭐️ rating on the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=bezalel6.tickify).
+**Enjoy!** If you find this extension helpful, please consider giving it a ⭐️ rating on the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=RNDev.tickify).
