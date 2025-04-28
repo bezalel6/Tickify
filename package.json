@@ -1,13 +1,26 @@
 {
-    "name": "template-literal-converter",
-    "displayName": "Template Literal Converter",
+    "name": "tickify",
+    "publisher": "bezalel6",
+    "displayName": "Tickify",
     "description": "Automatically converts string interpolation to template literals",
-    "version": "0.0.1",
+    "version": "1.0.0",
+    "author": {
+        "name": "bezalel6"
+    },
     "engines": {
         "vscode": "^1.60.0"
     },
     "categories": [
-        "Other"
+        "Other",
+        "Formatters",
+        "Programming Languages"
+    ],
+    "keywords": [
+        "template-literals",
+        "string-interpolation",
+        "javascript",
+        "typescript",
+        "code-formatting"
     ],
     "activationEvents": [
         "onLanguage:javascript",
@@ -18,6 +31,31 @@
     "main": "./out/extension.js",
     "contributes": {
         "commands": []
+    },
+    "icon": "assets/icon.png",
+    "galleryBanner": {
+        "color": "#2D2D2D",
+        "theme": "dark"
+    },
+    "pricing": "Free",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bezalel6/template-literal-converter"
+    },
+    "bugs": {
+        "url": "https://github.com/bezalel6/template-literal-converter/issues"
+    },
+    "homepage": "https://github.com/bezalel6/template-literal-converter#readme",
+    "license": "MIT",
+    "markdown": "github",
+    "qna": "marketplace",
+    "capabilities": {
+        "untrustedWorkspaces": {
+            "supported": true
+        },
+        "virtualWorkspaces": {
+            "supported": true
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
