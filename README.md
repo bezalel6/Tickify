@@ -5,7 +5,7 @@
 [![Version](https://img.shields.io/visual-studio-marketplace/v/bezalel6.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=bezalel6.tickify)
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/bezalel6.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=bezalel6.tickify)
 [![Rating](https://img.shields.io/visual-studio-marketplace/r/bezalel6.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=bezalel6.tickify)
-![Extension in Action](assets/animation.gif)
+![Extension in Action](assets/animation.gif)\
 A VS Code extension that automatically converts string interpolation to template literals. Never manually convert quotes to backticks again!
 
 ## ✨ Features

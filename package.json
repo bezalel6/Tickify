@@ -3,7 +3,7 @@
     "publisher": "bezalel6",
     "displayName": "Tickify",
     "description": "Automatically converts string interpolation to template literals",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "author": {
         "name": "bezalel6"
     },
@@ -32,7 +32,7 @@
     "contributes": {
         "commands": []
     },
-    "icon": "assets/icon.png",
+    "icon": "assets/narrow-2.png",
     "galleryBanner": {
         "color": "#2D2D2D",
         "theme": "dark"
@@ -40,12 +40,12 @@
     "pricing": "Free",
     "repository": {
         "type": "git",
-        "url": "https://github.com/bezalel6/template-literal-converter"
+        "url": "https://github.com/bezalel6/tickify"
     },
     "bugs": {
-        "url": "https://github.com/bezalel6/template-literal-converter/issues"
+        "url": "https://github.com/bezalel6/tickify/issues"
     },
-    "homepage": "https://github.com/bezalel6/template-literal-converter#readme",
+    "homepage": "https://github.com/bezalel6/tickify#readme",
     "license": "MIT",
     "markdown": "github",
     "qna": "marketplace",
