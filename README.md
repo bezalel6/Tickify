@@ -1,7 +1,5 @@
 ![Tickify Logo](assets/icon.png)
 
-# Tickify
-
 [![Version](https://img.shields.io/visual-studio-marketplace/v/RNDev.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=RNDev.tickify)
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/RNDev.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=RNDev.tickify)
 [![Rating](https://img.shields.io/visual-studio-marketplace/r/RNDev.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=RNDev.tickify)
