@@ -1,7 +1,6 @@
 ![Tickify Logo](assets/icon.png)
-
-# Tickify
-
+\
+\
 [![Version](https://img.shields.io/visual-studio-marketplace/v/RNDev.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=RNDev.tickify)
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/RNDev.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=RNDev.tickify)
 [![Rating](https://img.shields.io/visual-studio-marketplace/r/RNDev.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=RNDev.tickify)
@@ -28,10 +27,8 @@ When you type `${}` inside single or double quotes in JavaScript/TypeScript file
 
 ## 🚀 Installation
 
-1. Open VS Code
-2. Press `Ctrl+P` (Windows/Linux) or `Cmd+P` (Mac)
-3. Type `ext install RNDev.tickify`
-4. Press Enter
+1. Visit [Tickify on the VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=RNDev.tickify)
+2. Click "Install"
 
 ## 🎯 Usage
 
@@ -46,13 +43,7 @@ When you type `${}` inside single or double quotes in JavaScript/TypeScript file
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+Contributions are welcome! Feel free to submit a Pull Request.
 
 ## 📜 License
 
