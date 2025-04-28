@@ -3,15 +3,12 @@
     "name": "tickify",
     "displayName": "Tickify",
     "description": "Automatically converts string interpolation to template literals",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "publisher": "RNDev",
     "author": {
         "name": "RNDev"
     },
-    "icons": {
-        "dark": "assets/icon-dark.png",
-        "light": "assets/icon-light.png"
-    },
+    "icon": "assets/narrow-2.png",
     "license": "MIT",
     "engines": {
         "vscode": "^1.60.0"
