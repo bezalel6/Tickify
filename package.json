@@ -2,7 +2,7 @@
     "name": "tickify",
     "displayName": "Tickify",
     "description": "Automatically converts string interpolation to template literals",
-    "version": "1.0.14",
+    "version": "1.1.0",
     "publisher": "RNDev",
     "author": {
         "name": "RNDev"
@@ -44,7 +44,7 @@
             "supported": true
         }
     },
-    "main": "./out/extension.js",
+    "main": "./out/src/extension.js",
     "contributes": {
         "commands": [
             {
