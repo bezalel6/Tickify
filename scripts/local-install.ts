@@ -8,12 +8,14 @@ import * as fs from 'fs'
 if (fs.existsSync(extensionPath)) {
     // get around vscode's issue with installing an existing version
     console.log(`This version exists already`)
-}else{
+} else {
     // Run the build and package process
     execSync('vsce package', { stdio: 'inherit' })
-    
+
     // Install the extension
     execSync(`code --install-extension ${extensionPath}`, { stdio: 'inherit' })
 
+    console.log("hello ${}")
+    console.log("hello ${}")
 }
 

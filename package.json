@@ -1,9 +1,8 @@
 {
-    "$schema": "vscode-extension-schema.json",
     "name": "tickify",
     "displayName": "Tickify",
     "description": "Automatically converts string interpolation to template literals",
-    "version": "1.0.8",
+    "version": "1.0.14",
     "publisher": "RNDev",
     "author": {
         "name": "RNDev"
@@ -34,7 +33,8 @@
         "onLanguage:javascript",
         "onLanguage:typescript",
         "onLanguage:javascriptreact",
-        "onLanguage:typescriptreact"
+        "onLanguage:typescriptreact",
+        "onCommand:tickify.showOutput"
     ],
     "capabilities": {
         "untrustedWorkspaces": {
@@ -46,7 +46,12 @@
     },
     "main": "./out/extension.js",
     "contributes": {
-        "commands": []
+        "commands": [
+            {
+                "command": "tickify.showOutput",
+                "title": "Tickify: Show Output"
+            }
+        ]
     },
     "repository": {
         "type": "git",
