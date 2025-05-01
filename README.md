@@ -4,6 +4,7 @@
 [![Version](https://img.shields.io/visual-studio-marketplace/v/RNDev.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=RNDev.tickify)
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/RNDev.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=RNDev.tickify)
 [![Rating](https://img.shields.io/visual-studio-marketplace/r/RNDev.tickify.svg)](https://marketplace.visualstudio.com/items?itemName=RNDev.tickify)
+\
 ![Extension in Action](assets/animation.gif)\
 A VS Code extension that automatically converts string interpolation to template literals. Never manually convert quotes to backticks again!
 
