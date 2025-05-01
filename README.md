@@ -22,7 +22,7 @@ When you type `${}` inside single or double quotes in JavaScript/TypeScript file
 
 ```javascript
 "Hello ${name}" => `Hello ${name}`;
-"Hello ${name}" => `Hello ${name}`;
+'Hello ${name}' => `Hello ${name}`;
 ```
 
 ## 🚀 Installation
