@@ -2,7 +2,7 @@
     "name": "tickify",
     "displayName": "Tickify",
     "description": "Automatically converts string interpolation to template literals",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "publisher": "RNDev",
     "author": {
         "name": "RNDev"
@@ -55,7 +55,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/bezalel6/tickify"
+        "url": "git+https://github.com/bezalel6/tickify.git"
     },
     "bugs": {
         "url": "https://github.com/bezalel6/tickify/issues"

@@ -4,7 +4,8 @@ import * as vscode from 'vscode';
 let outputChannel: vscode.OutputChannel;
 
 // Regex to match strings that should be template literals (those containing ${...} expressions)
-const shouldReplaceRegex = /(["'])((?:(?!\1)[^\\]|\\.)*)(\$\{(?:(?:[^{}]|\{[^{}]*\})*)\})(?:(?!\1)[^\\]|\\.)*\1/g;
+const shouldReplaceRegex = /(['"])((?:\\.|(?!\1).)*?\$\{(?:[^{}]|\{[^{}]*\})*\}(?:\\.|(?!\1).)*?)\1/g;
+
 /**
  * Result interface containing the converted template literal and position information
  */
@@ -12,6 +13,54 @@ interface ConversionResult {
     convertedString: string;
     startingIndex: number;
     length: number;
+}
+
+/**
+ * Finds the boundaries of the string at the given position
+ * @param lineText The full line text
+ * @param cursorPosition The character position within the line
+ * @returns Object with start and end indices of the string, or null if not in a string
+ */
+function findStringBoundaries(lineText: string, cursorPosition: number): { start: number, end: number } | null {
+    let inString = false;
+    let currentQuote = '';
+    let start = -1;
+
+    // Scan character by character to properly handle escaping and nesting
+    for (let i = 0; i < lineText.length; i++) {
+        const char = lineText[i];
+        const prevChar = i > 0 ? lineText[i - 1] : '';
+
+        // Handle quote characters
+        if ((char === '"' || char === "'") && prevChar !== '\\') {
+            if (!inString) {
+                // Start of a new string
+                inString = true;
+                currentQuote = char;
+                start = i;
+            } else if (char === currentQuote) {
+                // End of the current string
+                const end = i;
+
+                // Check if our cursor position is within this string
+                if (cursorPosition >= start && cursorPosition <= end) {
+                    return { start, end };
+                }
+
+                // Reset for the next potential string
+                inString = false;
+                currentQuote = '';
+            }
+            // If we see a different quote inside a string, it's just a character in the string
+        }
+    }
+
+    // If we're still in a string at the end of scanning and the cursor is inside it
+    if (inString && cursorPosition >= start) {
+        return { start, end: lineText.length - 1 };
+    }
+
+    return null;
 }
 
 /**
@@ -31,12 +80,11 @@ function convertToTemplateLiteral(input: string): ConversionResult | null {
     match = shouldReplaceRegex.exec(input);
 
     if (match) {
-        const [fullMatch, quote, beforeExpression, templateExpression] = match;
+        const [fullMatch, quote, content] = match;
         const startingIndex = match.index;
-        const fullContent = fullMatch.slice(1, -1); // Remove the quotes
 
         // Convert to template literal
-        const convertedString = `\`${fullContent}\``;
+        const convertedString = `\`${content}\``;
 
         result = {
             convertedString,
@@ -75,68 +123,51 @@ export function activate(context: vscode.ExtensionContext) {
 
         const changes = event.contentChanges;
         for (const change of changes) {
-            if (!change.text.match(/[{}$]/)) {
+            // Skip changes that don't contain potential template expression characters
+            if (!change.text.includes('$') && !change.text.includes('{') && !change.text.includes('}')) {
                 continue;
             }
 
             try {
                 const position = change.range.start;
-                const document = editor.document;
+                const lineText = document.lineAt(position.line).text;
 
-                // Get the line and its text
-                const line = document.lineAt(position.line);
-                const lineText = line.text;
+                // Find the string boundaries at the cursor position
+                const boundaries = findStringBoundaries(lineText, position.character);
 
-                // Find the string boundaries around the change
-                const beforeChange = lineText.substring(0, position.character);
-                const afterChange = lineText.substring(position.character);
-
-                // Find the last quote before the change
-                const lastQuoteBefore = Math.max(
-                    beforeChange.lastIndexOf('"'),
-                    beforeChange.lastIndexOf("'")
-                );
-
-                // Find the first quote after the change
-                const firstQuoteAfter = Math.min(
-                    afterChange.indexOf('"') !== -1 ? afterChange.indexOf('"') + position.character : Infinity,
-                    afterChange.indexOf("'") !== -1 ? afterChange.indexOf("'") + position.character : Infinity
-                );
-
-                // If we can't find proper string boundaries, skip
-                if (lastQuoteBefore === -1 || firstQuoteAfter === Infinity) {
+                if (!boundaries) {
+                    outputChannel.appendLine(`No string detected at position ${position.line}:${position.character}`);
                     continue;
                 }
 
-                // Extract the potential template literal
-                const potentialTemplateLiteral = lineText.substring(lastQuoteBefore, firstQuoteAfter + 1);
+                // Extract the full string including its quotes
+                const fullString = lineText.substring(boundaries.start, boundaries.end + 1);
+                outputChannel.appendLine(`Detected string: ${fullString}`);
 
-                outputChannel.appendLine(`Processing potential template literal: ${potentialTemplateLiteral}`);
-
-                const result = convertToTemplateLiteral(potentialTemplateLiteral);
+                // Check if this string should be converted to a template literal
+                const result = convertToTemplateLiteral(fullString);
 
                 if (result) {
-                    outputChannel.appendLine(`Found template expression to convert: ${result.convertedString}`);
+                    outputChannel.appendLine(`Converting to template literal: ${result.convertedString}`);
 
                     const edit = new vscode.WorkspaceEdit();
                     const range = new vscode.Range(
-                        new vscode.Position(position.line, lastQuoteBefore),
-                        new vscode.Position(position.line, firstQuoteAfter + 1)
+                        new vscode.Position(position.line, boundaries.start),
+                        new vscode.Position(position.line, boundaries.end + 1)
                     );
 
                     edit.replace(document.uri, range, result.convertedString);
 
-                    // Use await to ensure the edit is applied before continuing
                     vscode.workspace.applyEdit(edit).then(success => {
-                        if (!success) {
-                            outputChannel.appendLine('Failed to apply template literal conversion');
-                        } else {
+                        if (success) {
                             outputChannel.appendLine('Successfully applied template literal conversion');
+                        } else {
+                            outputChannel.appendLine('Failed to apply template literal conversion');
                         }
                     });
                 }
             } catch (error) {
-                outputChannel.appendLine(`Error processing template literal conversion: ${error}`);
+                outputChannel.appendLine(`Error processing template literal conversion: ${error instanceof Error ? error.message : String(error)}`);
             }
         }
     });
@@ -145,5 +176,5 @@ export function activate(context: vscode.ExtensionContext) {
 
 export function deactivate() {
     outputChannel.appendLine('Template Literal Converter extension is now deactivated');
-    // outputChannel.dispose();
+    outputChannel.dispose();
 }
